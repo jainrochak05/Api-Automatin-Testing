@@ -1,188 +1,106 @@
-
-
-# API Automation Testing Framework  
-### Customized for Medicine Data REST API
+Below is the complete, professional **README.md** file for your **API Automation Testing Framework**. This version is optimized for readability and technical depth to specifically appeal to recruiters for **SDET** and **System Development** roles at companies like Amazon.
 
 ---
 
-## Overview
+# API Automation Testing Framework
 
-This repository contains a modular and scalable **API Automation Testing Framework** built using **Python and PyTest**.
+### *Robust Validation for Medicine Data REST Services*
 
-The framework is specifically configured to test the **Medicine Data REST API**, a backend service developed by the author. It validates functional correctness, error handling, response schema integrity, and performance thresholds.
+## 📌 Overview
 
-Although currently tuned for the Medicine Data API, the framework is designed with abstraction principles, making it easily adaptable to test any REST API with minimal structural changes.
+This repository hosts a modular and scalable **API Automation Testing Framework** built using **Python and Pytest**.
 
----
+The suite is engineered to provide high-confidence validation for the **Medicine Data REST API**, a backend service developed to manage information for over 17K medicines. By utilizing abstraction principles, the framework separates request management from test logic, ensuring it remains reusable across various microservices.
 
-## Target API Details
+## 🏗️ Architecture & Design
 
-### Endpoint Under Test
+The framework adheres to a decoupled structure to promote maintainability and clean code:
 
-```
-POST /get_medicine_info
-```
-
-### Request Format
-
-**Headers**
-```
-Content-Type: application/json
-```
-
-**Body**
-```json
-{
-  "medicine_name": "<medicine_name>"
-}
-```
-
-### Expected Responses
-
-| Status Code | Description |
-|-------------|-------------|
-| 200 | Valid medicine found |
-| 400 | Missing or invalid input |
-| 404 | Medicine not found |
-| 500 | Internal server error |
-
----
-
-## Framework Architecture
-
-```
-api-automation-testing-framework/
+```text
+api-automation-testing/
 │
 ├── utils/
-│   ├── __init__.py
-│   └── base_test.py          # Core request abstraction layer
+│   ├── base_test.py          # Core request abstraction and performance metrics
 │
 ├── tests/
-│   ├── __init__.py
-│   └── test_medicine_api.py  # Functional and negative test cases
+│   ├── test_medicine_api.py  # Functional, Negative, and Boundary test cases
 │
-├── requirements.txt
+├── requirements.txt          # Dependency specifications
 └── README.md
-```
-
----
-
-## Design Principles
-
-- Modular test structure  
-- Separation of request abstraction and validation logic  
-- Reusable and scalable for regression testing  
-- Strict payload validation for POST endpoints  
-- Performance-aware validation using response time assertions  
-
----
-
-## Features Implemented
-
-### Functional Testing
-Validates successful API response for valid medicine queries.
-
-### Negative Testing
-Tests system behavior for:
-- Missing fields
-- Empty input
-- Invalid medicine names
-
-### Schema Validation
-Ensures response contains expected JSON keys:
-- `medicine_name`
-- `composition`
-- `uses`
-- `side_effects`
-
-### Boundary Testing
-Validates handling of edge input conditions.
-
-### Performance Validation
-Measures response time and enforces acceptable latency thresholds.
-
----
-
-## Setup Instructions
-
-### 1. Clone the Repository
 
 ```
-git clone <repository_url>
-cd api-automation-testing-framework
+
+## 🧪 Testing Strategy
+
+The suite implements a multi-layered testing approach to ensure API robustness:
+
+### **1. Functional Validation**
+
+* Verifies successful `POST` requests to the `/get_medicine_info` endpoint.
+* Confirms response payload integrity with mandatory schema keys: `medicine_name`, `composition`, `uses`, and `side_effects`.
+
+### **2. Negative & Boundary Testing**
+
+* **Missing Fields**: Ensures the API returns a `400 Bad Request` when required fields are omitted.
+* **Invalid Queries**: Validates `404 Not Found` responses for non-existent medicine entries.
+* **Empty Strings**: Handles boundary cases where payloads contain empty values, enforcing strict input validation.
+
+### **3. Performance Benchmarking**
+
+* The framework tracks request latency using a high-precision timer in the utility layer.
+* Automated assertions enforce a strict performance threshold of **< 2.0 seconds** for standard responses.
+
+## 🛠️ Getting Started
+
+### **Prerequisites**
+
+* Python 3.x
+* Pip
+
+### **Installation**
+
+1. **Clone the Repository:**
+```bash
+git clone https://github.com/jainrochak05/api-automation-testing.git
+cd api-automation-testing
+
 ```
 
-### 2. Install Dependencies
 
-```
+2. **Install Dependencies:**
+```bash
 pip install -r requirements.txt
+
 ```
 
-### 3. Configure Base URL
 
-Update the following in `utils/base_test.py`:
+
+### **Configuration**
+
+The base URL is centralized in `utils/base_test.py`. Ensure it points to your target environment:
 
 ```python
-BASE_URL = "http://127.0.0.1:5000"
-```
-
-Modify the base URL if the API is deployed remotely.
-
----
-
-## Running the Tests
-
-Ensure the Medicine Data API server is running:
+BASE_URL = "https://medicine-data-lstd.onrender.com"
 
 ```
-python app.py
-```
 
-Then execute:
+## 🚀 Execution
 
-```
+Execute all tests with verbose reporting:
+
+```bash
 PYTHONPATH=. pytest -v
-```
-
-Example output:
 
 ```
-4 passed in 0.85s
-```
+
+## 🔮 Future Roadmap
+
+* [ ] **CI/CD Integration**: Implementing GitHub Actions to trigger automated test runs on every pull request.
+* [ ] **Data-Driven Testing**: Utilizing `@pytest.mark.parametrize` to scale test coverage across thousands of medicine data points.
+* [ ] **Enhanced Reporting**: Integration with Allure or HTML reports for stakeholder-friendly execution summaries.
 
 ---
 
-## Extending the Framework
+**Rochak Kr. Jain** *Founder, MedioFusion | B.Tech Computer Science*
 
-To adapt this framework for another API:
-
-1. Update the `BASE_URL`
-2. Modify endpoint paths
-3. Adjust payload structures
-4. Update schema assertions in test files
-5. Add new test modules under the `tests/` directory
-
-The abstraction layer ensures minimal duplication and easier scalability.
-
----
-
-## Future Enhancements
-
-- CI/CD integration using GitHub Actions  
-- Automated test reporting  
-- Environment-based configuration management  
-- Data-driven testing using parametrization  
-- Logging and structured execution reports  
-
----
-
-## About This Project
-
-The Medicine Data REST API tested in this framework was independently developed by the author.  
-This automation suite was built to validate its correctness, robustness, and performance under various operational scenarios.
-
----
-
-## License
-
-This project is intended for educational and demonstration purposes.
+Would you like me to now help you write the **Cover Letter** for the Amazon SDET role using these specific project highlights?
