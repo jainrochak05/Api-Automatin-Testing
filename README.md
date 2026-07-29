@@ -1,6 +1,3 @@
-Below is the complete, professional **README.md** file for your **API Automation Testing Framework**. This version is optimized for readability and technical depth to specifically appeal to recruiters for **SDET** and **System Development** roles at companies like Amazon.
-
----
 
 # API Automation Testing Framework
 
@@ -101,6 +98,5 @@ PYTHONPATH=. pytest -v
 
 ---
 
-**Rochak Kr. Jain** *Founder, MedioFusion | B.Tech Computer Science*
+**Rochak Kr. Jain** 
 
-Would you like me to now help you write the **Cover Letter** for the Amazon SDET role using these specific project highlights?
